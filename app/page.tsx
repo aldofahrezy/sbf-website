@@ -26,7 +26,7 @@ export default function HomePage() {
       <section className="mx-auto max-w-6xl px-4 py-12 grid gap-10 md:grid-cols-3">
         <article className="text-center">
           <img
-            src="public/images/student-coding-desk.jpg" // error here
+            src="/images/student-coding-desk.png"
             alt="Easy to use illustration"
             className="mx-auto"
             height={140}
@@ -39,7 +39,7 @@ export default function HomePage() {
         </article>
         <article className="text-center">
           <img
-            src="public/images/focus-on-what-matters-illustration.jpg" // error here
+            src="/images/mountain-illustration.png"
             alt="Focus on what matters illustration"
             className="mx-auto"
             height={140}
@@ -52,7 +52,7 @@ export default function HomePage() {
         </article>
         <article className="text-center">
           <img
-            src="public/images/powered-by-react-illustration.jpg" // error here
+            src="/images/powered-by-react-illustration.png"
             alt="Powered by React illustration"
             className="mx-auto"
             height={140}
