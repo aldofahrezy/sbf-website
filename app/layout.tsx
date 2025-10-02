@@ -9,8 +9,8 @@ import { SiteFooter } from "@/components/site-footer"
 import { Suspense } from "react"
 
 export const metadata: Metadata = {
-  title: "v0 App",
-  description: "Created with v0",
+  title: "SBF Bismit 2025",
+  description: "Created for Sekolah Bem Fasilkom Biro Bisnis dan Kemitraan 2025",
   generator: "v0.app",
 }
 

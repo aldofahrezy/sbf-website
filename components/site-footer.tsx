@@ -20,7 +20,7 @@ export function SiteFooter() {
           </ul>
         </div>
         <div className="flex items-end md:justify-end">
-          <p className="text-xs text-muted-foreground">Copyright © {new Date().getFullYear()} PBP Fasilkom UI.</p>
+          <p className="text-xs text-muted-foreground">Copyright © {new Date().getFullYear()} Bismit BEM Fasilkom UI.</p>
         </div>
       </div>
     </div>
