@@ -24,7 +24,7 @@ export function SiteHeader() {
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2 font-semibold">
           <span className="inline-block h-6 w-6 rounded-full bg-primary" aria-hidden />
-          <span className="text-sm md:text-base">PBP Ganjil 25/26</span>
+          <span className="text-sm md:text-base">SBF Bismit 2025</span>
         </Link>
         <nav className="flex items-center gap-1" aria-label="Primary">
           <NavLink href="/tutorials" label="Tutorial" />
