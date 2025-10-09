@@ -5,13 +5,13 @@ description: Basic intro
 
 # HTML: HyperText Markup Language
 
-_HTML_ (Hypertext Markup Languange) merupakan struktur dari website untuk menampilkan konten.
+HTML (Hypertext Markup Languange) merupakan struktur dari website untuk menampilkan konten.
 
 Untuk inisialisasi HTML vanilla, kalian dapat:
 
 1. Install live server extension
-2. Membuat file `.html` di vscode
-3. inisialisasi struktur dengan _!_ ,maka akan membuat struktur dasar HTML.
+1. Membuat file `.html` di vscode
+1. inisialisasi struktur dengan _!_ ,maka akan membuat struktur dasar HTML.
 
 ```html
 <!DOCTYPE html>
@@ -33,6 +33,213 @@ Untuk inisialisasi HTML vanilla, kalian dapat:
 # CSS: Cascading Style Sheets
 
 Bahasa styling yang digunakan untuk mendefinisikan tampilan pada dokumen yang telah ditulis dengan format HTML.
+
+**A. Layouting**  
+Layout menjadi suatu hal yang penting di CSS, untuk dapat _Arrange_ video seperti di youtube, kita perlu memahami konsep grid yang mengolah konten menjadi tabular dengan mendefinisikan kolom dan baris-nya.
+
+**1. Grid**  
+Grid biasanya digunakan
+
+```html
+<div class="wrapper">
+  <header class="main-head">The header</header>
+  <nav class="main-nav">
+    <ul>
+      <li><a href="">Nav 1</a></li>
+      <li><a href="">Nav 2</a></li>
+      <li><a href="">Nav 3</a></li>
+    </ul>
+  </nav>
+  <article class="content">
+    <h1>Main article area</h1>
+    <p>
+      In this layout, we display the areas in source order for any screen less
+      that 500 pixels wide. We go to a two column layout, and then to a three
+      column layout by redefining the grid, and the placement of items on the
+      grid.
+    </p>
+  </article>
+  <aside class="side">Sidebar</aside>
+  <div class="ad">Advertising</div>
+  <footer class="main-footer">The footer</footer>
+</div>
+```
+
+```css
+.main-head {
+  grid-area: header;
+}
+.content {
+  grid-area: content;
+}
+.main-nav {
+  grid-area: nav;
+}
+.side {
+  grid-area: sidebar;
+}
+.ad {
+  grid-area: ad;
+}
+.main-footer {
+  grid-area: footer;
+}
+
+.wrapper {
+  display: grid;
+  gap: 20px;
+  grid-template-areas:
+    "header"
+    "nav"
+    "content"
+    "sidebar"
+    "ad"
+    "footer";
+}
+
+@media (width >= 500px) {
+  .wrapper {
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas:
+      "header  header"
+      "nav     nav"
+      "sidebar content"
+      "ad      footer";
+  }
+  nav ul {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media (width >= 700px) {
+  .wrapper {
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-areas:
+      "header header  header"
+      "nav    content sidebar"
+      "nav    content ad"
+      "footer footer  footer";
+  }
+  nav ul {
+    flex-direction: column;
+  }
+}
+```
+
+**2. Flex**  
+Berbeda dari grid yang memiliki baris dan kolom, sifat dari flex itu satu arah/dimensi yaitu baris atau kolom saja.
+
+```html
+<div class="box">
+  <div>One</div>
+  <div>Two</div>
+  <div>Three</div>
+</div>
+```
+
+- Flex Col:
+
+```css
+.box > * {
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+  background-color: rgb(96 139 168 / 0.2);
+  width: 200px;
+}
+
+.box {
+  width: 1000px;
+  border: 2px dotted rgb(96 139 168);
+  display: flex;
+  flex-direction: col;
+}
+```
+
+- Flex Row:
+
+```css
+.box > * {
+  border: 2px solid rgb(96 139 168);
+  border-radius: 5px;
+  background-color: rgb(96 139 168 / 0.2);
+  width: 200px;
+}
+
+.box {
+  width: 1000px;
+  border: 2px dotted rgb(96 139 168);
+  display: flex;
+  flex-direction: row;
+}
+```
+
+Kelebihan yang dimiliki flex adalah bisa melakukan adjustment secara dinamis tanpa perlu mendefinisikan ulang sesuai breakpointnya, dapat menggunakan Flex Wrap
+
+```css
+flex-wrap: wrap;
+```
+
+Ketika telah menyentuh widh yang tidak sesuai dengan elemen dalam kontainer, maka secara dinamis akan berubah dari row ke col dan sebaliknya.
+
+---
+
+**B. CSS Responsiveness**
+
+Sebagai developer yang baik, kalian harus memikirkan supaya aplikasi yang kalian buat dapat digunakan di segala device. CSS menerapkan breakpoint yang berguna untuk mengatur design dari website sesuai dengan device yang dinamakan media queries.
+
+**Kapan kita harus menentukan untuk menetapkan media queries atau tidak?**
+
+Honorable Mention Media Queries:
+
+```css
+@media (hover: hover) {
+  /* ... */
+}
+
+@media screen, print {
+  /* … */
+}
+
+@media print and (orientation: portrait) {
+  /* … */
+}
+```
+
+Media Queries paling sering digunakan untuk menentukan breakpoint dari width dan height yang terdefinisi
+
+```css
+@media (min-width: 30em) and (max-width: 50em) {
+  /* … */
+}
+
+@media (30em <= width <= 50em) {
+  /* … */
+}
+
+@media (50em >= width >= 30em) {
+  /* … */
+}
+
+/* Mobile */
+@media screen and (min-width: 480px) {
+  /* … */
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+  /* … */
+}
+
+/* Desktop */
+@media screen and (min-width: 992px) {
+  /* … */
+}
+```
+
+Breakpoint untuk ketiga device biasa dijadikan standar untuk membuat tampilan website, developer melakukan responsive adjustment dengan ketiga breakpoint tersebut.
+
+Snippets CSS Code:
 
 Contoh kode dengan CSS:
 
@@ -188,7 +395,3 @@ body {
 
 Setelah kalian buka, website akan lebih nyaman dan bagus untuk dilihat bukan? Nah itu fungsionalitas dari CSS,
 Coba kalian Hapus CSSnya. Hasilnya kayak gimana?
-
----
-
-# Javascript: DOM

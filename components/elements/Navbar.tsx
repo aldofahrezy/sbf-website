@@ -12,6 +12,13 @@ const Navbar = () => {
           <p className="text-s3">SBF Bismit 2025</p>
         </div>
       </Link>
+      <div className="flex items-center font-semibold gap-12 text-s4">
+        <Link href="/tutorial/docs/tutorial-1">Tutorial</Link>
+        <Link href="/">Assignment</Link>
+        <Link href="https://codepen.io/pen/" target="_blank">
+          Playground
+        </Link>
+      </div>
     </nav>
   );
 };
