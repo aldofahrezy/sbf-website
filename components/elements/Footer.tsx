@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-slate-900 text-s3 px-8 py-8 border-t border-slate-950 text-white">
+    <footer className="w-full h-64 bg-slate-900 text-s3 px-8 py-8 border-t border-slate-950 text-white">
       <div>
         Biro Bisnis dan Kemitraan BEM Fasilkom UI © 2025 - All Rights Reserved.
         <div className="flex mt-4">

@@ -1,8 +1,13 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "prismjs/themes/prism-tomorrow.css";
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
+
+html {
+  scroll-behavior: smooth;
+}
 
 :root {
   --background: oklch(0.98 0.01 255);
@@ -38,6 +43,8 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  --nav-h: 6rem;
 }
 
 .dark {
@@ -179,4 +186,17 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.prose :where(h1, h2, h3, h4, h5, h6) {
+  scroll-margin-top: var(--nav-h);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
