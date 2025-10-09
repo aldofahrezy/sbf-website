@@ -393,5 +393,115 @@ body {
 }
 ```
 
+```javascript
+const cells = document.querySelectorAll(".cell");
+const statusText = document.querySelector("#statusText");
+const restartBtn = document.querySelector("#restartButton");
+const player = document.querySelectorAll(".player");
+const displayScoreX = document.querySelector("#scoreX");
+const displayScoreO = document.querySelector("#scoreO");
+
+const winConditions = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+];
+
+let options = ["", "", "", "", "", "", "", "", ""];
+let currPlayer = "X";
+
+let running = false;
+let scoreX = 0;
+let scoreO = 0;
+
+const initializeGame = () => {
+  cells.forEach((cell) => cell.addEventListener("click", cellClicked));
+  restartBtn.addEventListener("click", restartGame);
+  statusText.textContent = `${currPlayer}'s turn`;
+  player.forEach((text) => {
+    text.textContent = currPlayer;
+  });
+  displayScoreX.textContent = scoreX;
+  displayScoreO.textContent = scoreO;
+  running = true;
+};
+
+function cellClicked() {
+  const cellIndex = this.getAttribute("cellIndex");
+
+  if (options[cellIndex] !== "" || !running) {
+    return null;
+  }
+  updateCell(this, cellIndex);
+  checkWinner();
+
+  if (running) {
+    changePlayer();
+  }
+}
+
+const updateCell = (cell, index) => {
+  options[index] = currPlayer;
+  cell.textContent = currPlayer;
+};
+
+const changePlayer = () => {
+  currPlayer = currPlayer === "X" ? "O" : "X";
+  player.forEach((text) => {
+    text.textContent = currPlayer;
+  });
+  statusText.textContent = `${currPlayer}'s turn`;
+};
+
+const checkWinner = () => {
+  let flag = false;
+  for (let i = 0; i < winConditions.length; i++) {
+    let counter = 0;
+    const checker = winConditions[i].every(
+      (index) => options[index] === currPlayer
+    );
+    console.log(checker);
+    for (index of winConditions[i]) {
+      if (options[index] !== "" && checker) {
+        counter++;
+      }
+    }
+    if (counter === 3) {
+      flag = true;
+      break;
+    }
+  }
+
+  if (flag) {
+    if (currPlayer === "X") {
+      scoreX++;
+    } else if (currPlayer === "O") {
+      scoreO++;
+    }
+    displayScoreX.textContent = scoreX;
+    displayScoreO.textContent = scoreO;
+    statusText.textContent = `${currPlayer}'s Win!`;
+    running = false;
+  } else if (options.every((cell) => cell !== "")) {
+    statusText.textContent = `Game Draw`;
+    running = false;
+  }
+};
+
+const restartGame = () => {
+  options = ["", "", "", "", "", "", "", "", ""];
+  cells.forEach((cell) => (cell.textContent = ""));
+
+  initializeGame();
+};
+
+initializeGame();
+```
+
 Setelah kalian buka, website akan lebih nyaman dan bagus untuk dilihat bukan? Nah itu fungsionalitas dari CSS,
 Coba kalian Hapus CSSnya. Hasilnya kayak gimana?
